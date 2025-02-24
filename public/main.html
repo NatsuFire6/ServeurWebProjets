@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Créateur de Macro</title>
     <link rel="stylesheet" href="main.css"> <!-- Lien vers votre fichier CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"> <!-- Lien vers Font Awesome pour les icônes -->
 </head>
 <body>
     <div class="container">
@@ -12,17 +13,17 @@
         <form id="macroForm">
             <div class="form-group">
                 <label for="macroName">Nom de la Macro:</label>
-                <input type="text" id="macroName" name="macroName" required>
+                <input type="text" id="macroName" name="macroName" placeholder="Entrez le nom de la macro" required>
             </div>
             <div class="form-group">
                 <label for="macroCommand">Commande à exécuter:</label>
-                <textarea id="macroCommand" name="macroCommand" rows="4" required></textarea>
+                <textarea id="macroCommand" name="macroCommand" rows="4" placeholder="Entrez les commandes à exécuter" required></textarea>
             </div>
-            <button type="submit">Créer Macro</button>
+            <button type="submit" id="submitButton" class="btn-primary"><i class="fas fa-plus"></i> Créer Macro</button>
         </form>
-        <div id="output"></div>
+        <div id="output" class="output"></div>
         <h2>Macros Sauvegardées</h2>
-        <ul id="macroList"></ul>
+        <ul id="macroList" class="macro-list"></ul>
     </div>
     <script src="main.js"></script> <!-- Lien vers votre fichier JavaScript -->
 </body>

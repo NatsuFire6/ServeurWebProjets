@@ -1,6 +1,7 @@
 const express = require('express');
 const bodyParser = require('body-parser');
 const path = require('path');
+const { exec } = require('child_process');
 const app = express();
 const port = 3000;
 
@@ -15,10 +16,19 @@ app.get('/', (req, res) => {
 });
 
 app.post('/execute', (req, res) => {
-    const command = req.body.command;
-    // Here you can add code to execute the command on the server
-    console.log(`Executing command: ${command}`);
-    res.json({ result: `Command ${command} executed.` });
+    const commands = req.body.command.split('\n').filter(cmd => cmd.trim() !== '').join(' && ');
+    console.log(`Executing combined command: ${commands}`);
+    exec(commands, (error, stdout, stderr) => {
+        if (error) {
+            console.error(`Erreur: ${error.message}`);
+            return res.status(500).json({ result: `Erreur: ${error.message}` });
+        }
+        if (stderr) {
+            console.error(`Stderr: ${stderr}`);
+            return res.status(500).json({ result: `Erreur: ${stderr}` });
+        }
+        res.json({ result: stdout });
+    });
 });
 
 app.listen(port, () => {
