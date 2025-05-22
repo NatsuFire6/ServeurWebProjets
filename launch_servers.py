@@ -4,4 +4,4 @@ import subprocess
 subprocess.Popen(["node", "server.js"])
 
 # Lancer serveur Python (Flask)
-subprocess.Popen(["python3", "fetchlien/server.py"])
+subprocess.Popen(["python3", "fetchLien/server.py"])
