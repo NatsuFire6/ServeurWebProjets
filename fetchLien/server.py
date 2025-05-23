@@ -21,7 +21,7 @@ def index():
             <input type="url" id="url" name="url" required>
             <button type="submit">Envoyer</button>
         </form>
-        <button onclick="window.location.href='http://localhost:3000/'">Autre fonctionnalité</button>
+        <button onclick="location.href=window.location.protocol + '//' + window.location.hostname + ':3000'">Autre fonctionnalité</button>
     </body>
     </html>
     '''
